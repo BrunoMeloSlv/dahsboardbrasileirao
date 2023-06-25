@@ -80,7 +80,7 @@ time_Pênaltis_cometidos = pd.DataFrame(dados.groupby('Equipe')['Pênaltis comet
 time_Cartão_vermelho = pd.DataFrame(dados.groupby('Equipe')['Cartão vermelho'].sum()).reset_index().sort_values('Cartão vermelho', ascending=False)
 time_Cartão_amarelo = pd.DataFrame(dados.groupby('Equipe')['Cartão amarelo'].sum()).reset_index().sort_values('Cartão amarelo', ascending=False)
 
-
+dados_agrupados = pd.merge(time_Finalização, time_Gols, left_on = 'Equipe', right_on = 'Equipe')
 
 ### Gráficos
 
@@ -241,6 +241,9 @@ fig_Cartão_amarelo = px.bar(Cartão_amarelo.head(),
 fig_Cartão_amarelo.update_layout(yaxis_title = 'Cartões amarelos')
 
 ## Times
+
+fig_teste =  px.scatter(data_frame = dados_agrupados, x = 'Finalização certa', y = 'Gols', text = 'Equipe', size = 'Gols')
+fig_teste.update_layout(yaxis_title = 'Finalização x Gols')
 
 fig_time_passes = px.bar(time_passes.head(),
                              x = 'Equipe',
@@ -427,8 +430,8 @@ with aba2:
        st.plotly_chart(fig_time_Impedimentos,use_container_width= True)
        st.plotly_chart(fig_time_Pênaltis_cometidos,use_container_width= True)
        st.plotly_chart(fig_time_Cartão_amarelo,use_container_width= True)
-
-       
+       st.plotly_chart(fig_teste,use_container_width= True)
+ 
     with col2:
         st.plotly_chart(fig_time_Finalização,use_container_width= True)
         st.plotly_chart(fig_time_Cruzamento,use_container_width= True)
