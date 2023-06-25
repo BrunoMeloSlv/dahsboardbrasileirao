@@ -243,7 +243,7 @@ fig_Cartão_amarelo.update_layout(yaxis_title = 'Cartões amarelos')
 ## Times
 
 fig_teste =  px.scatter(data_frame = dados_agrupados, x = 'Finalização certa', y = 'Gols', text = 'Equipe', size = 'Gols')
-fig_teste.update_layout(yaxis_title = 'Finalização x Gols')
+fig_teste.update_layout(yaxis_title = 'Gols')
 
 fig_time_passes = px.bar(time_passes.head(),
                              x = 'Equipe',
